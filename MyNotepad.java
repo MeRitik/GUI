@@ -132,9 +132,6 @@ public class MyEditor extends JFrame {
 		JMenu mnNewMenu_3 = new JMenu("Format");
 		menuBar.add(mnNewMenu_3);
 		
-		JMenuItem mntmNewMenuItem_9 = new JMenuItem("New menu item");
-		mnNewMenu_3.add(mntmNewMenuItem_9);
-		
 		JMenuItem mntmNewMenuItem_10 = new JMenuItem("Background");
 		mnNewMenu_3.add(mntmNewMenuItem_10);
 		
@@ -261,6 +258,10 @@ public class MyEditor extends JFrame {
 					bReader.close();
 				}catch(IOException ie) {}
 			}
+		});
+		
+		mntmNewMenuItem_5.addActionListener((ae)->{
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		});
 		
 		mntmNewMenuItem_11.addActionListener((e)->{
