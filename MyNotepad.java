@@ -38,7 +38,7 @@ import javax.swing.JCheckBoxMenuItem;
 
 
 public class MyEditor extends JFrame {
-	int fsize = 12;
+//	int fsize = 12;
 	boolean isSavedFile, stateChanged = false;
 	
 	File currentFile = null;
@@ -240,7 +240,9 @@ public class MyEditor extends JFrame {
 		JTextArea textArea = new JTextArea();
 //		contentPane.add(textArea);
 		textArea.setLineWrap(true);
-		textArea.setFont(new Font("Arial", Font.PLAIN, fsize));
+		
+		// change default font size from here
+		textArea.setFont(new Font("Arial", Font.PLAIN, 12));
 		
 		// Scroll 
 		JScrollPane scroll = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -422,65 +424,57 @@ public class MyEditor extends JFrame {
 		});
 		
 		rdbtnmntmNewRadioItem_2.addActionListener((e)->{
-			textArea.setFont(new Font("Arial", Font.PLAIN, fsize));
+			textArea.setFont(new Font("Arial", Font.PLAIN, textArea.getFont().getSize()));
 		});
 		
 		rdbtnmntmNewRadioItem_3.addActionListener((e)->{
-			textArea.setFont(new Font("Times New Roman", Font.PLAIN, fsize));
+			textArea.setFont(new Font("Times New Roman", Font.PLAIN, textArea.getFont().getSize()));
 		});
 		
 		rdbtnmntmNewRadioItem_4.addActionListener((e)->{
-			textArea.setFont(new Font("Monotype Corsiva", Font.PLAIN, fsize));
+			textArea.setFont(new Font("Monotype Corsiva", Font.PLAIN, textArea.getFont().getSize()));
 		});
 		
 		rdbtnmntmNewRadioItem_13.addActionListener((e)->{
-			textArea.setFont(new Font("Microsoft Himalya", Font.PLAIN, fsize));
+			textArea.setFont(new Font("Microsoft Himalya", Font.PLAIN, textArea.getFont().getSize()));
 		});
 		
 		rdbtnmntmNewRadioItem_14.addActionListener((e)->{
-			textArea.setFont(new Font("Calibri", Font.PLAIN, fsize));
+			textArea.setFont(new Font("Calibri", Font.PLAIN, textArea.getFont().getSize()));
 		});
 		
 		rdbtnmntmNewRadioItem_5.addActionListener((e)->{
-			fsize = 10;
-			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, fsize));
+			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, 10));
 		});
 		
 		rdbtnmntmNewRadioItem_6.addActionListener((e)->{
-			fsize = 12;
-			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, fsize));
+			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, 12));
 		});
 		
 //		System.out.println(textArea.getFont().getName());
 		
 		rdbtnmntmNewRadioItem_7.addActionListener((e)->{
-			fsize = 16;
-			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, fsize));
+			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, 16));
 		});
 		
 		rdbtnmntmNewRadioItem_8.addActionListener((e)->{
-			fsize = 18;
-			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, fsize));
+			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, 18));
 		});
 		
 		rdbtnmntmNewRadioItem_9.addActionListener((e)->{
-			fsize = 24;
-			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, fsize));
+			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, 24));
 		});
 		
 		rdbtnmntmNewRadioItem_10.addActionListener((e)->{
-			fsize = 32;
-			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, fsize));
+			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, 32));
 		});
 		
 		rdbtnmntmNewRadioItem_11.addActionListener((e)->{
-			fsize = 48;
-			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, fsize));
+			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, 48));
 		});
 		
 		rdbtnmntmNewRadioItem_12.addActionListener((e)->{
-			fsize = 72;
-			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, fsize));
+			textArea.setFont(new Font(textArea.getFont().getName(), Font.PLAIN, 72));
 		});
 		
 		
