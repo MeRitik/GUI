@@ -28,7 +28,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -38,7 +37,6 @@ import javax.swing.JCheckBoxMenuItem;
 
 
 public class MyEditor extends JFrame {
-//	int fsize = 12;
 	boolean isSavedFile, stateChanged = false;
 	
 	File currentFile = null;
@@ -83,15 +81,6 @@ public class MyEditor extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("New");
 		mnNewMenu.add(mntmNewMenuItem);
 		
-		mntmNewMenuItem.addActionListener((ae)->{
-			try {
-				MyEditor frame = new MyEditor();
-				frame.setVisible(true);
-				frame.setSize(500, 500);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Save");
 		mnNewMenu.add(mntmNewMenuItem_1);
@@ -336,6 +325,89 @@ public class MyEditor extends JFrame {
 			}
 		});
 		
+		mntmNewMenuItem.addActionListener((ae)->{
+			if(stateChanged) {
+				JFrame jf = new JFrame("MyEditor");
+				jf.setVisible(true);
+				jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				jf.setBounds(600, 300, 503, 126);
+				jf.setTitle("MyEditor");
+				JPanel contentPane = new JPanel();
+				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+				jf.setContentPane(contentPane);
+				contentPane.setLayout(null);
+						
+				JLabel text = new JLabel("Do you want to save changes to " + getTitle());
+				text.setFont(new Font("Microsoft Himalaya", Font.PLAIN, 20));
+				text.setBounds(106, 19, 373, 24);
+				contentPane.add(text);
+						
+				JButton btnNewButton = new JButton("Don't Save");
+				btnNewButton.setBounds(180, 53, 99, 26);
+				contentPane.add(btnNewButton);
+				
+				JButton btnNewButton_1 = new JButton("Save");
+				btnNewButton_1.setBounds(52, 53, 99, 26);
+				contentPane.add(btnNewButton_1);
+						
+				JButton btnNewButton_2 = new JButton("Cancel");
+				btnNewButton_2.setBounds(306, 53, 99, 26);
+				contentPane.add(btnNewButton_2);
+						
+						
+				JLabel lblNewLabel = new JLabel(UIManager.getIcon("OptionPane.warningIcon"));
+				lblNewLabel.setBounds(52, 12, 55, 37);
+				contentPane.add(lblNewLabel);
+						
+				btnNewButton.addActionListener((e)->{
+					System.exit(0);
+				});
+						
+				btnNewButton_1.addActionListener((e)->{
+					// code for saving the file
+					// Checking if a file is opened
+					JFileChooser jfc = new JFileChooser();
+					if(isSavedFile) {
+						try {
+							FileWriter file = new FileWriter(currentFile.getAbsoluteFile());
+							file.write(textArea.getText());
+							file.close();
+						}catch(IOException io) {}
+					}else {
+						int x = jfc.showSaveDialog(this);
+						FileWriter file = null;
+								
+						if(x == JFileChooser.APPROVE_OPTION) {
+							try {
+								String path = jfc.getSelectedFile().getAbsolutePath();
+								String name = jfc.getSelectedFile().getName();
+								setTitle(name + " - My Notepad");
+								file = new FileWriter(path);
+										
+								currentFile = new File(path);
+										
+								file.write(textArea.getText());
+								file.close();
+								isSavedFile = true;
+								System.exit(0);
+							}catch(IOException ie) {}
+									
+						}
+					}
+				});
+						
+				btnNewButton_2.addActionListener((e)->{
+					jf.dispose();
+				});
+			}else {
+				isSavedFile = false;
+				textArea.setText("");
+				textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+				rdbtnmntmNewRadioItem_6.setSelected(true);
+				rdbtnmntmNewRadioItem_2.setSelected(true);
+			}
+		});
+		
 		mntmNewMenuItem_5.addActionListener((ae)->{
 			if(textArea.getText().isEmpty()) {
 				System.exit(0);
@@ -353,7 +425,7 @@ public class MyEditor extends JFrame {
 				contentPane.setLayout(null);
 						
 				JLabel text = new JLabel("Do you want to save changes to " + getTitle());
-				text.setFont(new Font("Microsoft Himalaya", Font.PLAIN, 24));
+				text.setFont(new Font("Microsoft Himalaya", Font.PLAIN, 20));
 				text.setBounds(106, 19, 373, 24);
 				contentPane.add(text);
 						
